@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Todo from './component/Todo'
 import Header from './component/Header'
 import Auth from './component/Auth'
@@ -19,12 +19,12 @@ const login = () => {
 
   return(
     <div className="App">
-    <AuthContext.Provider>
+    <AuthContext.Provider value={{status: authStatus, login: login}}>
       <Header 
           onLoadTodos={switchPage.bind(this, 'todos')} 
           onLoadAuth={switchPage.bind(this, 'auth')} />
         <hr/>
-        {page == 'auth' ? <Auth/> : <Todo/>}
+        {page === 'auth' ? <Auth/> : <Todo/>}
     </AuthContext.Provider>
       
     </div>
